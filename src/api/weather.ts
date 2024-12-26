@@ -60,7 +60,7 @@ export const reverseGeocode = async ({
   const url = createUrl(`${API_CONFIG.GEO}/reverse`, {
     lat,
     lon,
-    limit: "1",
+    limit: 1,
   });
   return fetchData<GeocodingResponse[]>(url);
 };
