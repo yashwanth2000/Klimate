@@ -8,6 +8,7 @@ import {
   useWeatherQuery,
   useForecastQuery,
 } from "@/hooks/use-weather";
+import CurrentWeather from "@/components/CurrentWeather";
 
 const WeatherDashboard = () => {
   const {
@@ -66,7 +67,7 @@ const WeatherDashboard = () => {
     );
   }
 
-  // const locationName = locationQuery.data?.name;
+  const locationName = locationQuery.data?.[0];
 
   if (weatherQuery.error || forecastQuery.error) {
     return (
@@ -106,6 +107,16 @@ const WeatherDashboard = () => {
             }`}
           />
         </Button>
+      </div>
+
+      <div className="grid gap-6">
+        <div>
+          <CurrentWeather
+            data={weatherQuery.data}
+            locationName={locationName}
+          />
+        </div>
+        <div></div>
       </div>
     </div>
   );
