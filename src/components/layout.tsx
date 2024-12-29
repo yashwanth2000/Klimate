@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 import { Header } from "./Header";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface LayoutProps extends PropsWithChildren {
   className?: string;
@@ -11,22 +11,22 @@ const Layout = ({ children, className = "" }: LayoutProps) => {
 
   const pageTransition = {
     initial: { opacity: 0, scale: 0.98 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       scale: 1,
       transition: {
         duration: 0.5,
-        ease: [0.22, 1, 0.36, 1]
-      }
+        ease: [0.22, 1, 0.36, 1],
+      },
     },
-    exit: { 
+    exit: {
       opacity: 0,
       scale: 0.95,
       transition: {
         duration: 0.3,
-        ease: [0.22, 1, 0.36, 1]
-      }
-    }
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
   };
 
   return (
@@ -45,11 +45,11 @@ const Layout = ({ children, className = "" }: LayoutProps) => {
       </AnimatePresence>
 
       <footer className="relative mt-auto border-t border-b-0 border-x-0 border-gray-200 dark:border-gray-700/30 backdrop-blur-md py-12 bg-white/50 dark:bg-gray-900/50 supports-[backdrop-filter]:bg-white/50 dark:supports-[backdrop-filter]:bg-gray-900/50 transition-all duration-300 hover:backdrop-blur-lg">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="container mx-auto px-2 text-center"
+          className="container mx-auto px-2 text-center cursor-pointer"
         >
           <p className="text-gray-600 dark:text-gray-400 transition-colors duration-200">
             Made with{" "}
