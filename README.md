@@ -1,50 +1,78 @@
-# React + TypeScript + Vite
+# Klimate 🌤️  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Demo**: [Visit the Deployed App](https://klimate-zeta.vercel.app/)  
 
-Currently, two official plugins are available:
+Klimate is a feature-packed weather dashboard built with **React**, **TypeScript**, **TanStack Query**, and modern UI libraries. This project showcases dynamic weather data retrieval, real-time geolocation, and a customizable experience with favorite cities—all while following best practices for clean, reusable code.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: Component-based library for building interactive UIs.  
+- **TypeScript**: Static typing for improved development and maintainability.  
+- **TanStack Query**: Powerful data fetching and caching library.  
+- **Tailwind CSS**: Utility-first CSS framework for responsive styling.  
+- **ShadCN UI**: Accessible and modern component library.  
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🎯 Features  
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. **Weather Dashboard**  
+   - Real-time weather updates using browser geolocation.  
+   - Display of current, hourly, and extended weather forecasts.  
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+2. **Favorite Cities**  
+   - Add and manage your favorite cities using local storage.  
+   - Interactive favorite city list with horizontal scrolling.  
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+3. **Weather Visualization**  
+   - Visualize detailed weather data with intuitive components like:
+     - **CurrentWeather**: Displays temperature, conditions, and location.
+     - **WeatherDetails**: Detailed metrics like humidity, wind speed, etc.
+     - **HourlyTemperature**: Graphical view of hourly temperature.  
+
+4. **Responsive and Accessible Design**  
+   - Fully responsive layout for an optimal experience across devices.  
+   - Built with modern UI components for accessibility and aesthetic appeal.  
+
+---
+
+## 🚀 Getting Started  
+
+### Prerequisites  
+
+Ensure you have the following installed:  
+- Node.js (v14 or later)  
+- npm or yarn  
+
+### Installation  
+
+1. **Clone the repository**:  
+   ```bash  
+   git clone https://github.com/yashwanth2000/Klimate.git
+   ```  
+
+2. **Navigate to the project directory**:  
+   ```bash  
+   cd klimate  
+   ```  
+
+3. **Install dependencies**:  
+   ```bash  
+   npm install  
+   ```  
+
+4. **Start the development server**:  
+   ```bash  
+   npm run dev  
+   ```  
+
+### Deployment  
+
+To deploy the application:  
+1. Push the project to a GitHub repository.  
+2. Connect the repository to **Vercel**.  
+3. Deploy the app through the Vercel dashboard.  
+
+---
