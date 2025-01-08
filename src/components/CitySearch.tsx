@@ -8,12 +8,13 @@ import {
   CommandItem,
   CommandList,
 } from "./ui/command";
-import { Clock, Loader2, Search, XCircle } from "lucide-react";
+import { Clock, Loader2, Search, Star, XCircle } from "lucide-react";
 import { useLocationSearch } from "@/hooks/use-weather";
 import { CommandSeparator } from "cmdk";
 import { useNavigate } from "react-router-dom";
 import { useSearchHistory } from "@/hooks/use-search-history";
 import { format } from "date-fns";
+import { useFavorite } from "@/hooks/use-favorite";
 
 const CitySearch = () => {
   const [open, setOpen] = useState(false);
@@ -21,6 +22,7 @@ const CitySearch = () => {
   const { data: locations, isLoading } = useLocationSearch(query);
   const navigate = useNavigate();
   const { history, clearHistory, addToHistory } = useSearchHistory();
+  const { favorite } = useFavorite();
 
   const handleSelect = (cityData: string) => {
     const [lat, lon, name, country] = cityData.split("|");
@@ -32,6 +34,7 @@ const CitySearch = () => {
       name,
       country,
     });
+    setQuery("");
     setOpen(false);
     navigate(`/city/${name}?lat=${lat}&lon=${lon}`);
   };
@@ -58,6 +61,31 @@ const CitySearch = () => {
             <CommandEmpty>No Cities found.</CommandEmpty>
           )}
 
+          {/* Favorites Section */}
+          {favorite.length > 0 && (
+            <CommandGroup heading="Favorites">
+              {favorite.map((city) => (
+                <CommandItem
+                  key={city.id}
+                  value={`${city.lat}|${city.lon}|${city.name}|${city.country}`}
+                  onSelect={handleSelect}
+                >
+                  <Star className="mr-2 h-4 w-4 text-yellow-500" />
+                  <span>{city.name}</span>
+                  {city.state && (
+                    <span className="text-sm text-muted-foreground">
+                      , {city.state}
+                    </span>
+                  )}
+                  <span className="text-sm text-muted-foreground">
+                    , {city.country}
+                  </span>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
+
+          {/* Search History Section */}
           {history.length > 0 && (
             <>
               <CommandSeparator />
@@ -101,13 +129,6 @@ const CitySearch = () => {
               </CommandGroup>
             </>
           )}
-
-          <CommandSeparator />
-
-          <CommandGroup heading="Favorites">
-            <CommandItem>Calendar</CommandItem>
-          </CommandGroup>
-
           <CommandSeparator />
 
           {locations && locations.length > 0 && (
